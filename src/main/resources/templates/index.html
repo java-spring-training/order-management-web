@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Add New Customer</title>
+        <style>
+            .submit {
+                color: #fff;
+                background-color: skyblue;
+                padding: 10px;
+                border: 1px solid #999;
+                width: 100%;
+            }
+
+            .success-message {
+                width: 120px;
+                padding: 10px;
+                color: #fff;
+                background-color: green;
+                border: 1px solid #999;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>ADD CUSTOMERS</h1>
+        <br>
+        <div th:if="${message != null}" th:text="${message}"></div>
+        <table>
+            <form action="#" th:action="@{/customer/add}" method="POST" th:object="${customerRequestBody}">
+                <tr>
+                    <td>User number</td>
+                    <td>
+                        <input type="text" th:field="*{customerNumber}">
+                        <div th:if="${#fields.hasErrors('customerNumber')}" th:errors="*{customerNumber}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Customer name</td>
+                    <td>
+                        <input type="text" th:field="*{customerName}">
+                        <div th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Contact last name</td>
+                    <td>
+                        <input type="text" th:field="*{contactLastName}">
+                        <div th:if="${#fields.hasErrors('contactLastName')}" th:errors="*{contactLastName}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Contact first name</td>
+                    <td>
+                        <input type="text" th:field="*{contactFirstName}">
+                        <div th:if="${#fields.hasErrors('contactFirstName')}" th:errors="*{contactFirstName}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td>
+                        <input type="text" th:field="*{phone}">
+                        <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address line 1</td>
+                    <td>
+                        <input type="text" th:field="*{addressLine1}">
+                        <div th:if="${#fields.hasErrors('addressLine1')}" th:errors="*{addressLine1}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address line 2</td>
+                    <td>
+                        <input type="text" th:field="*{addressLine2}">
+                        <div th:if="${#fields.hasErrors('addressLine2')}" th:errors="*{addressLine2}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td>
+                        <input type="text" th:field="*{city}">
+                        <div th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>State</td>
+                    <td>
+                        <input type="text" th:field="*{state}">
+                        <div th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Postal code</td>
+                    <td>
+                        <input type="text" th:field="*{postalCode}">
+                        <div th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td>
+                        <input type="text" th:field="*{country}">
+                        <div th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sales employee number</td>
+                    <td>
+                        <input type="text" th:field="*{salesRepEmployeeNumber}">
+                        <div th:if="${#fields.hasErrors('salesRepEmployeeNumber')}" th:errors="*{salesRepEmployeeNumber}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Credit limit</td>
+                    <td>
+                        <input type="text" th:field="*{creditLimit}">
+                        <div th:if="${#fields.hasErrors('creditLimit')}" th:errors="*{creditLimit}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class="submit" type="submit">Add Customer</button>
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </body>
+</html>

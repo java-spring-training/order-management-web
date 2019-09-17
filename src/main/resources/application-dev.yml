@@ -1,0 +1,7 @@
+server:
+  port: 9001
+api:
+  customer:
+    host: http://localhost
+    port: 9000
+    name: /api/v1/order/addCustomer
