@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+<h1>ORDERS</h1>
+
+<form class="form-inline" th:action="@{/orders}" th:object="${orderFilterForm}" method="get">
+    <div class="form-group mx-sm-3 mb-2">
+        <label class="mr-3">Order number</label>
+        <input class="form-control" th:field="*{orderNumber}">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Filter</button>
+</form>
+
+<hr>
+
+<div th:if="${orders}">
+    <p th:text="'Number of orders: ' + ${orders.size()}"/>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Order Number</th>
+            <th>Order Date</th>
+            <th>Status</th>
+            <th>Product Name</th>
+            <th>Buy Price</th>
+            <th>Customer Name</th>
+            <th>Phone</th>
+            <th>Country</th>
+            <th>Employee Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order, state : ${orders}">
+
+            <!--show index-->
+            <td th:text="${state.index + 1}"></td>
+            <td th:text="${order.orderNumber}"></td>
+            <td th:text="${#dates.format(order.orderDate, 'dd-MMM-yyyy')}"></td>
+            <td th:text="${order.status}"></td>
+            <td th:text="${order.productName}"></td>
+            <td th:text="${order.buyPrice}"></td>
+            <td th:text="${order.customerName}"></td>
+            <td th:text="${order.phone}"></td>
+            <td th:text="${order.country}"></td>
+            <td th:text="${order.employeeEmail}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+
+</html>
