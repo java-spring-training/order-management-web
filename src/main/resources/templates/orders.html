@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+<h1>PRODUCTS</h1>
+    <br>
+
+    <p th:text="'Order size = ' + ${orders.size()}" />
+
+    <br>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Order Number</th>
+            <th>Order Date</th>
+            <th>Status</th>
+            <th>Product Name</th>
+            <th>Buy Price</th>
+            <th>Customer Name</th>
+            <th>Phone</th>
+            <th>Country</th>
+            <th>Employee Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <span th:each="order, state : ${orders}">
+
+            <!--show index-->
+            <td><span th:text="${state.index + 1}" /></td>
+            <td><span th:text="${order.get('orderNumber')}" /></td>
+            <td><span th:text="${order.get('orderDate')}" /></td>
+            <td><span th:text="${order.get('status')}" /></td>
+            <td><span th:text="${order.get('productName')}" /></td>
+            <td><span th:text="${order.get('buyPrice')}" /></td>
+            <td><span th:text="${order.get('customerName')}" /></td>
+            <td><span th:text="${order.get('phone')}" /></td>
+            <td><span th:text="${order.get('country')}" /></td>
+            <td><span th:text="${order.get('employeeEmail')}" /></td>
+        </tr>
+        </span>
+        </div>
+        </tbody>
+    </table>
+</body>
+</html>
