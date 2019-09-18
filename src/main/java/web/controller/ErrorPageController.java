@@ -1,23 +1,38 @@
 package web.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
 public class ErrorPageController implements ErrorController {
 
+    private Logger log = Logger.getLogger(ErrorPageController.class);
 
-    @RequestMapping("/error")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String HandlerErrorNotFoundUrl() {
-        return "order";
+    @RequestMapping("/404")
+    public String handlerErrorNotFoundUrl(Model model) {
+
+        log.error("Invalid Url");
+
+
+        model.addAttribute("message", "Customizer NOT FOUND");
+
+        return "error";
+    }
+
+    @RequestMapping("/500")
+    public String handlerErrorSystem(Model model) {
+
+        log.error("Internal error");
+
+        model.addAttribute("message", "Customizer SYSTEM ERROR");
+        return "error";
     }
 
     @Override
     public String getErrorPath() {
-        return "/error";
+        return null;
     }
 }

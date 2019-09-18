@@ -12,7 +12,7 @@ public class OrderRequestBody {
     @Min(value = 0, message="Min = 0")
     private Integer customerNumber;
     @NotNull
-    @Min(value = 0)
+    @Min(value = 0, message="Min = 0")
     private Integer orderId;
     @NotNull
     private String productCode;
