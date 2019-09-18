@@ -1,0 +1,7 @@
+server:
+  port: 9090
+api:
+  order:
+    host: http://localhost
+    port: 8080
+    name: /api/v1/order/edit
