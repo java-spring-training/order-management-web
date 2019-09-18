@@ -1,6 +1,7 @@
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/java?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password:
+server:
+  port: 9090
+api:
+  order:
+    host: http://localhost
+    port: 8080
+    name: /api/v1/order/edit

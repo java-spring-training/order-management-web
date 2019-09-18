@@ -1,38 +1,42 @@
-package api.controller;
-
-import api.config.ApiConfig;
-import api.domain.entities.object.Order;
-import api.domain.entities.object.OrderDetail;
-import api.exception.ApiException;
-import api.exception.ParameterInvalidException;
-import api.repository.OrderFactory;
-import api.service.OrderService;
+package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import web.config.ApiConfig;
+import web.domain.entities.object.Order;
+import web.exception.ApiException;
+import web.repository.OrderRequest;
+import web.service.OrderService;
 
 import javax.validation.Valid;
 
-@RestController
+@Controller
 public class EditController {
-
-    private OrderService orderService;
     private OrderFactory factory;
+    private OrderService orderService;
     @Autowired
-    public EditController(OrderService orderService, OrderFactory orderFactory) {
+    public EditController (OrderFactory factory, OrderService orderService) {
+        this.factory = factory;
         this.orderService = orderService;
-        this.factory = orderFactory;
+    }
+    @GetMapping(ApiConfig.EDIT_ORDER)
+    public String editOrder(OrderRequestBody orderRequestBody) throws Exception {
+        return "order";
     }
 
-    @PostMapping(ApiConfig.EDIT_ORDER_API)
-    public CustomReponse editOrder(@Valid @RequestBody OrderRequestBody orderRequestBody, BindingResult bindingResult) throws ParameterInvalidException, ApiException {
-            if(bindingResult.hasErrors()) {
-                throw new ParameterInvalidException(getErrorMessage(bindingResult));
-            }
-            final Order orderData = factory.toOrder(orderRequestBody);
-            orderService.editOrder(orderData, orderRequestBody.getProductCode());
-            return new CustomReponse(HttpStatus.OK.value());
+    @PostMapping (ApiConfig.EDIT_ORDER)
+    public String postEditOrder(@Valid OrderRequestBody orderRequestBody, BindingResult bindingResult,
+                                RedirectAttributes attributes) throws ApiException {
+        if(bindingResult.hasErrors()) {
+            return "order";
+        }
+        final Order orderData = factory.toOrder(orderRequestBody);
+        final OrderRequest orderRequest = factory.toOrderRequest(orderData);
+        orderService.editOrder(orderRequest);
+        attributes.addFlashAttribute("message", "success");
+        return "index";
     }
 
     private String getErrorMessage(BindingResult bindingResult) {

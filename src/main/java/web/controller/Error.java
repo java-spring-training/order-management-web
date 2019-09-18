@@ -1,4 +1,4 @@
-package api.controller;
+package web.controller;
 
 public class Error {
 

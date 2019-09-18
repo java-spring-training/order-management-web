@@ -1,4 +1,4 @@
-package api.exception;
+package web.exception;
 
 public class ApiException extends Exception {
     public ApiException(String message) {

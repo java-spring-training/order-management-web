@@ -1,4 +1,4 @@
-package api.domain.values.object;
+package web.domain.values.object;
 
 public class OrderID {
     private int orderID;

@@ -1,4 +1,4 @@
-package api.exception;
+package web.exception;
 
 public class ParameterInvalidException extends Exception {
 

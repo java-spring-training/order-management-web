@@ -1,11 +1,9 @@
 package web.domain.values.object;
 
-public class OrderID {
-    private int orderID;
-    public OrderID (int orderID) {
-        this.orderID = orderID;
+public class ProductCode {
+    private String productCode;
+    public ProductCode(String productCode) {
+        this.productCode = productCode;
     }
-    public int getOrderID() {
-        return orderID;
-    }
+    public String getProductCode() { return productCode; }
 }

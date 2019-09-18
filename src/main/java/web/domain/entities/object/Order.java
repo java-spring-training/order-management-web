@@ -1,6 +1,6 @@
-package api.domain.entities.object;
+package web.domain.entities.object;
 
-import api.domain.values.object.OrderID;
+import web.domain.values.object.OrderID;
 
 public class Order {
     private OrderID orderID;
