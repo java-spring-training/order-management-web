@@ -20,7 +20,7 @@ public class WebExceptionHandler {
 
         log.error("Invalid Input parameter", ex);
         model.addAttribute("message", "Invalid Input parameter");
-        return "index";
+        return "add-customer";
     }
 
     @ExceptionHandler(CustomerApiErrorException.class)

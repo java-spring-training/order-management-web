@@ -6,7 +6,7 @@ import web.domain.entities.object.Customers;
 @Component
 public class CustomerRequestFactory {
 
-    public Customers toCustomers(CustomerRequestBody requestBody) {
+    public Customers toCustomers(CustomerForm requestBody) {
 
         return new Customers(requestBody.getCustomerNumber(), requestBody.getCustomerName(),
                 requestBody.getContactLastName(), requestBody.getContactFirstName(), requestBody.getPhone(),

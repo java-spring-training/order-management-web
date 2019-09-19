@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 
-public class CustomerRequestBody {
+public class CustomerForm {
 
     @Min(value = 0, message = "customerNumber is invalid")
     @NotNull(message = "customerNumber must not be null")
@@ -35,13 +35,13 @@ public class CustomerRequestBody {
     @Min(value = 0)
     private BigDecimal creditLimit;
 
-    public CustomerRequestBody() {
+    public CustomerForm() {
     }
 
-    public CustomerRequestBody(Integer customerNumber, String customerName, String contactLastName,
-                               String contactFirstName, String phone, String addressLine1, String addressLine2, String city,
-                               String state, String postalCode, String country, Integer salesRepEmployeeNumber,
-                               BigDecimal creditLimit) {
+    public CustomerForm(Integer customerNumber, String customerName, String contactLastName,
+                        String contactFirstName, String phone, String addressLine1, String addressLine2, String city,
+                        String state, String postalCode, String country, Integer salesRepEmployeeNumber,
+                        BigDecimal creditLimit) {
 
         this.customerNumber = customerNumber;
         this.customerName = customerName;

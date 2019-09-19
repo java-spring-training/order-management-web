@@ -26,19 +26,19 @@ public class CustomerController {
     }
 
     @GetMapping(WebPathConfig.ADD_CUSTOMER_PAGE)
-    public String showAddCustomerPage(CustomerRequestBody customerRequestBody) {
+    public String showAddCustomerPage(final CustomerForm customerForm) {
 
-        return "index";
+        return "add-customer";
     }
 
     @PostMapping(WebPathConfig.ADD_CUSTOMER_POST_URL)
-    public String addCustomer(final @Valid CustomerRequestBody customerRequestBody, final BindingResult bindingResult,
-                final RedirectAttributes redirectAttributes) throws CustomerApiErrorException {
+    public String addCustomer(final @Valid CustomerForm customerForm, final BindingResult bindingResult,
+                    final RedirectAttributes redirectAttributes) throws CustomerApiErrorException {
 
         if (bindingResult.hasErrors()) {
-            return "index";
+            return "add-customer";
         }
-        customerService.addCustomer(factory.toCustomers(customerRequestBody));
+        customerService.addCustomer(factory.toCustomers(customerForm));
         redirectAttributes.addFlashAttribute("message", "Add customer successfully!");
         return "redirect:/customer/add";
     }
